@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: livy-service
+  namespace: spark
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8998
+    targetPort: 8998
+  selector:
+    app: livy-server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: livy-server-deployment
+  namespace: spark
+spec:
+  selector:
+    matchLabels:
+      app: livy-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: livy-server
+    spec:
+      serviceAccountName: spark-sa
+      containers:
+      - name: livy-server
+        image: anildwacontainerregistry.azurecr.io/livy:2.0
+        imagePullPolicy: Always
+        args: ["livy-server"]
+        ports:
+        - containerPort: 8998
+        - containerPort: 10000

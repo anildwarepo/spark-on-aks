@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark-deployment
+  namespace: spark
+spec:
+  selector:
+    matchLabels:
+      app: spark
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: spark
+    spec:
+      serviceAccountName: spark-sa
+      containers:
+      - name: spark
+        image: anildwacontainerregistry.azurecr.io/spark:2.4.5
+        args: ["/bin/bash"]
+        imagePullPolicy: Always

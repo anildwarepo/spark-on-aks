@@ -1,0 +1,23 @@
+{
+    "name": "NycTaxiData18",
+    "className": "org.anildwa.spark.NycTaxiData",
+    "numExecutors": 2,
+    "driverMemory": "4g",
+    "executorMemory": "20g",
+    "executorCores": 6,
+    "conf": {
+        "spark.executor.instances" : 2, 
+        "spark.eventLog.enabled" : "true", 
+        "spark.eventLog.dir" :"abfss://spark-event-logs@<storageaccount>.dfs.core.windows.net/logs",  
+        "spark.kubernetes.driver.volumes.hostPath.aksvm.mount.path" : "/mnt", 
+        "spark.kubernetes.driver.volumes.hostPath.aksvm.options.path" : "/tmp",  
+        "spark.kubernetes.namespace" : "spark",  
+        "spark.kubernetes.authenticate.driver.serviceAccountName" : "spark-sa", 
+        "spark.kubernetes.executor.podTemplateFile" : "/opt/livy/work-dir/executor-pod-template.yaml",
+        "spark.kubernetes.container.image" : "<youracr>.azurecr.io/<yoursparkimage:tag>",
+        "spark.kubernetes.container.image.pullPolicy" :"Always",
+        "spark.hadoop.fs.azure.account.key.<storageaccount>.dfs.core.windows.net" : "<storage access key>"
+    },
+    "file": "abfss://jars@<storageaccount>.dfs.core.windows.net/drop/nyctaxidata-1.0.jar",
+    "args": ["abfss://nytaxidata@<storageaccount>.dfs.core.windows.net/input", "abfss://nytaxidata@<storageaccount>.dfs.core.windows.net/output"]
+}
