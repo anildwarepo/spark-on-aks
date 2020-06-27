@@ -1,7 +1,10 @@
 #!/bin/bash
+RESOURCE_GROUP="your resource group"
+AKS_CLUSTER_NAME="AKS Cluster Name"
+
 az aks nodepool add \
-    --resource-group aks \
-    --cluster-name anildwaaks \
+    --resource-group $RESOURCE_GROUP \
+    --cluster-name $AKS_CLUSTER_NAME \
     --name spotnodepool \
     --priority Spot \
     --eviction-policy Delete \
