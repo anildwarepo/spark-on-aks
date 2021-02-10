@@ -1,12 +1,7 @@
 apiVersion: v1
 kind: Pod
 spec:
-  tolerations:
-  - key: "kubernetes.azure.com/scalesetpriority"
-    operator: "Equal"
-    value: "spot"
-    effect: "NoSchedule"
   containers:
     - name: spark
-      image: anildwacontainerregistry.azurecr.io/spark-3.0.0:2.0
+      image: anildwacontainerregistry.azurecr.io/spark:3.0.1
       imagePullPolicy: Always

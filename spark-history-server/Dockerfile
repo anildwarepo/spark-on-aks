@@ -60,11 +60,11 @@ ENV PATH="$SPARK_HOME/bin:$PATH"
 
 
 WORKDIR /opt/spark/work-dir
-COPY executor-pod-template.yaml .
-COPY driver-pod-template.yaml .
+#COPY executor-pod-template.yaml .
+#COPY driver-pod-template.yaml .
 RUN chmod g+w /opt/spark/work-dir
 
-ENTRYPOINT [ "/opt/spark/kubernetes/dockerfiles/spark/entrypoint.sh" ]
+# ENTRYPOINT [ "/opt/spark/kubernetes/dockerfiles/spark/entrypoint.sh" ]
 
 # Specify the User that the actual main process will run as
-USER ${spark_uid}
+# USER ${spark_uid}

@@ -3,5 +3,5 @@ kind: Pod
 spec:
   containers:
     - name: spark
-      image: anildwacontainerregistry.azurecr.io/spark-3.0.0:2.0
+      image: anildwacontainerregistry.azurecr.io/spark:3.0.1
       imagePullPolicy: Always
