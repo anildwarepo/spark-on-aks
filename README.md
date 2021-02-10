@@ -1,7 +1,7 @@
 # spark-on-aks
 This repo can be used to run spark jobs, spark streaming on Azure Kubernetes Service. 
 Here are the key capabilities it provides
-- Uses Spark 3.0.0 and Hadoop 3.2.1
+- Uses Spark 3.0.1 and Hadoop 3.2.1
 - Integrates Azure Data Lake Storage Gen2 with Azure Kubernetes Services
 - Spark jobs, spark streaming and delta can be used on AKS and read and write data to Azure Data Lake Gen2
 - Multinode pools can be used in AKS
